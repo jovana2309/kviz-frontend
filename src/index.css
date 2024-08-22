@@ -4,9 +4,8 @@
   font-weight: 400;
   color: rgba(255, 255, 255, 0.87);
 
-  background-image: url('kviz.jpg');
-  background-size: cover;
-  background-position: center;
+  background-image: url('./assets/background.jpg');
+  background-size:cover;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -14,11 +13,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-body {
-  background-image: url('./assets/kviz.jpg');
-  background-size: cover;
-  background-position: center;
+@media only screen and (max-width: 1280px) {
+  :root {
+    background-position: top;
+    background-size:unset;
+  }
 }
 
 a {
@@ -32,10 +31,7 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  
 }
 
 h1 {
