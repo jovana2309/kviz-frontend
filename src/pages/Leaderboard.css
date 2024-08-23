@@ -1,0 +1,39 @@
+.lb {
+    text-align: center;
+    padding: 20px 0px 80px 0px;
+    
+}
+
+.st {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    background: #b11dde; 
+    padding: 10px 25px; 
+    border-radius: 30px; 
+    border: 1px solid #686EF9;
+    margin:60px 0 30px 0px;  
+}
+
+
+.sta h2 {
+    color: #fff; 
+    margin: 0; 
+    font-size: 1.5rem;
+}
+
+
+
+
+.tab {
+
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+}
+
+.tab tr, .tab th {
+    border: 1px solid #b11dde;
+    padding: 15px;
+}
+

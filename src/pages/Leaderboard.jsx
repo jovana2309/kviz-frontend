@@ -1,5 +1,7 @@
 import {useState, useEffect} from 'react'
 import axiosInstance from '../services/axios';
+import "./Leaderboard.css";
+import TitleWithBackButton from '../components/TitleWithBackButton';
 
 const Leaderboard = () => {
     const [data, setData] = useState([]);
@@ -30,19 +32,43 @@ const Leaderboard = () => {
     if (error) {
       return <div>Error: {error}</div>;
     }
-  console.log(data)
+  const rows = data.map((object,index) =>(
+    <tr key = {object.id}>
+      <td>{index+1}</td>
+      <td>{object.ime} {object.prezime} </td>
+      <td>{new Date(object.datum).toLocaleDateString("sr-SR")}</td>
+      <td>{object.rezultat}</td>
+    </tr>
+  ))
     return (
+
       <div>
-        <h1>Leaderboard</h1>
-        <ul>
-          {data.map((item, index) => (
-            <li key={index}>
-              {index + 1}. {item.name} - {item.score}
-            </li>
-          ))}
-        </ul>
+        <TitleWithBackButton title="Leaderboard" />
+        <nav className = "st">
+          <div className = "sta">   
+        <h2> Standings </h2>
+        </div>
+        
+        </nav>
+        <table className = "tab">
+  <thead>
+    <tr>
+      <th>Rank</th>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Correct Answers</th>
+    </tr>
+    </thead>
+    <tbody>
+    {rows}
+   
+    </tbody>
+</table>
+        
       </div>
     );
   };
+
+
   
   export default Leaderboard;

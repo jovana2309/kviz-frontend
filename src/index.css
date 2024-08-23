@@ -57,3 +57,16 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
+.flex {display:flex}
+.justify-center {
+  justify-content: center;
+}
+
+.gap-20 {
+  gap:20px;
+}
+
+.align-center {
+  align-items: center;
+}
