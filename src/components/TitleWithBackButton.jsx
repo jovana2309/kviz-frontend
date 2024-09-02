@@ -3,7 +3,7 @@ import backIcon from "../assets/icons.png";
 
 function TitleWithBackButton ({title}) {
     return (
-        <div className = "flex justify-center align-center gap-20">
+        <div style = {{marginTop: "50px"}} className = "flex justify-center align-center gap-20">
             <Link to="/">
             <img src = {backIcon} alt = "back-icon" width ={50} height = {50} />
             </Link>

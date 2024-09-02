@@ -2,9 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './pages/App.jsx'
 import Leaderboard from './pages/Leaderboard.jsx'
-// import Login from './pages/Login.jsx'
-// import Register from './pages/Register.jsx'
-// import Game from './pages/Game.jsx'
+import Login from './pages/Login.jsx'
+import SignUp from './pages/SignUp.jsx'
+import Game from './pages/Game.jsx'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
@@ -19,19 +19,19 @@ const router = createBrowserRouter ([
     element: <Leaderboard />
   },
 
-  // {path: "/login",
-  //   element: <Login />
-  // },
+  {path: "/login",
+    element: <Login />
+  },
 
-  // {
-  //   path: "/register",
-  //   element: <Register />
-  // },
+  {
+    path: "/signup",
+    element: <SignUp />
+  },
 
-  // {
-  //   path: "/play",
-  //   element: <Game />
-  // }
+  {
+    path: "/play",
+    element: <Game />
+  }
 
 ])
 

@@ -41,9 +41,10 @@ const Leaderboard = () => {
     </tr>
   ))
     return (
-
-      <div>
+       
+      <div style={{height:"100vh"}}>
         <TitleWithBackButton title="Leaderboard" />
+        <div style = {{height: "70%"}} className = "flex-column justify-center">
         <nav className = "st">
           <div className = "sta">   
         <h2> Standings </h2>
@@ -64,7 +65,7 @@ const Leaderboard = () => {
    
     </tbody>
 </table>
-        
+</div>
       </div>
     );
   };

@@ -1,7 +1,10 @@
 .title {  
    text-align: center;
    font-size:30px;
+}
+.mt-50{
     
+    margin-top: 50px;
 }
 
 .main-menu {
