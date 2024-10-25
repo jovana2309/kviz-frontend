@@ -24,7 +24,7 @@ function App() {
     <ul className="main-menu">
       {user && user.isAdmin ? (
         <li>
-          <Link to = "/admin">Admin</Link>
+          <Link to = "/admin/users">Admin</Link>
         </li>
       ) : ""}
       <li className="login"><Link to={Plays.toLowerCase()}>{Plays}</Link></li>

@@ -7,6 +7,10 @@ import SignUp from './pages/SignUp.jsx'
 import Game from './pages/Game.jsx'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Questions from './pages/Questions.jsx'
+import AdminUsers from './pages/AdminUsers.jsx'
+import Adminleaderboard from './pages/Adminleaderboard.jsx'
+
 
 const router = createBrowserRouter ([
   {
@@ -31,8 +35,21 @@ const router = createBrowserRouter ([
   {
     path: "/play",
     element: <Game />
-  }
+  },
 
+  {
+    path: "/admin/questions",
+    element: <Questions />
+  },
+
+  {
+    path: "/admin/users",
+    element: <AdminUsers />
+  },
+  {
+    path: "/admin/leaderboard",
+    element: <Adminleaderboard />
+  }
 ])
 
 

@@ -1,0 +1,52 @@
+
+.table-container table {
+  width: 900px;
+  border-collapse: collapse;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin: 15px;
+}
+
+.table-container th,
+.table-container td {
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  
+}
+.table-container th {
+  text-align: left;
+}
+.table-container thead th {
+  background-color: #b11dde;
+}
+.table-container tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.table-container tbody td {
+  position: relative;
+}
+.table-container tbody td:hover:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -9999px;
+  bottom: -9999px;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: -1;
+}
+
+.delete-button {
+  background-color: #b11dde;
+  color: white; 
+  border: none; 
+  border-radius: 15px; 
+  padding: 7px 3px; 
+  cursor: pointer; 
+  
+}
+
+.delete-button:hover {
+  background-color: black; 
+}
