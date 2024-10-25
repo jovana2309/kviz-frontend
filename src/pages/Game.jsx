@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../services/axios";
 import TitleWithBackButton from "../components/TitleWithBackButton";
 import "./Game.css";
+import GameOver from "../components/GameOver.jsx";
 
 
 function Game () {
@@ -32,18 +33,34 @@ function Game () {
     },
     []); 
 
-
-    const submitAnswer = async (e) => {
+    
+    const submitAnswer = async (id) => {
        try {
+        console.log(id)
         setQuestion(null);
         const response = await axiosInstance.post("/play/submitAnswer", {
-            answer:e.target.value,
+            answer:id,
         });
         setQuestion(response.data);
        }
        catch (err) {
         setError(err);
        }
+    };
+
+    const fiftyFifty = async () => {
+        try {
+            const response = await axiosInstance.post("/play/fifty-fifty", {
+                question,
+            } );
+            console.log(response.data)
+            if (response.data.question) {
+                setQuestion(response.data);
+            }
+        }
+        catch (err) {
+            setError(err);
+        }
     };
 
     if (error) 
@@ -69,29 +86,55 @@ function Game () {
         }
 
 
-
-
-
+        const emptyButton = <button className="answer-btn"></button>
 
     return ( 
         <>
         <TitleWithBackButton title="Main Menu" />
 <div className = "cont">
 <div className="quiz-container flex justify-center align-center">
-    <div className="header">
+    <div className="header gap-20">
         <div className="question">
             <p>{question.question}</p>
         </div>
-        <div id="score">Score: 0</div>
+        
+        {question.lifeline && <button style = {{ 
+            flex:"1",
+            height: "fit-content",
+            border: "2px solid",
+            padding: "10px",
+            backgroundColor: "purple",
+            borderRadius: "10px",
+            cursor: "pointer"
+        }} onClick={fiftyFifty}>
+            50:50
+        </button> }
+        <div id="score">Score: {question.currentScore}</div>
     </div>
     <div className="answers">
         <div className="answer-group">
-            <button className="answer-btn" onClick="selectAnswer('A')">A. Berlin</button>
-            <button className="answer-btn" onClick="selectAnswer('B')">B. Madrid</button>
+            {question.answers[0].text ? 
+                <button className="answer-btn" onClick = {()=>submitAnswer(question.answers[0].id)}>A. {question.answers[0].text}</button>
+            :
+                emptyButton
+            }
+            {question.answers[1].text ? 
+            <button className="answer-btn" onClick = {()=>submitAnswer(question.answers[1].id)}>C. {question.answers[1].text}</button>
+            :
+                emptyButton
+            }
         </div>
         <div className="answer-group">
-            <button className="answer-btn" onClick="selectAnswer('C')">C. Paris</button>
-            <button className="answer-btn" onClick="selectAnswer('D')">D. Rome</button>
+        {question.answers[2].text ?
+            <button className="answer-btn" onClick = {()=>submitAnswer(question.answers[2].id)}>B. {question.answers[2].text}</button>
+        :
+            emptyButton
+        }
+        {question.answers[3].text ?
+            <button className="answer-btn" onClick= {()=>submitAnswer(question.answers[3].id)}>D. {question.answers[3].text}</button>
+        :
+            emptyButton
+        }
         </div>
     </div>
 

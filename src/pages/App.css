@@ -17,9 +17,7 @@ list-style: none;
 }
 
 .main-menu li{
-    display:flex;
     width: 200px;
-    height:80px;
     border: 2px solid #333;
     border-radius:5px;
     font-size: 18px;
@@ -38,7 +36,7 @@ list-style: none;
 
 .main-menu li a {
     padding:20px;
-    display:flex;
+    display:block;
     text-decoration:none;
     color:white;
     text-align: center;

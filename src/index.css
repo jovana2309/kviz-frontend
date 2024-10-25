@@ -6,6 +6,8 @@
 
   background-image: url('./assets/background.jpg');
   background-size:cover;
+  background-attachment: fixed;
+  background-repeat:no-repeat;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -53,6 +55,18 @@ h1 {
   gap:20px;
 }
 
+.gap-50 {
+  gap:50px;
+}
+
 .align-center {
   align-items: center;
+}
+
+.flexx {
+  gap: 160px;
+}
+
+.justify-between {
+  justify-content: space-between;
 }

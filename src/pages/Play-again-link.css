@@ -1,0 +1,15 @@
+
+.Play-again-link {
+    color: white;
+    margin: 40px;
+    padding: 20px;
+    box-sizing: border-box;
+    border: solid #b11dde 2px;
+    text-decoration: none; 
+    display: inline-block;
+    transition: background-color 0.3s, color 0.3s; }
+
+.Play-again-link:hover {
+    background-color: #b11dde;
+    color:white;
+}

@@ -1,9 +1,9 @@
 import { Link} from "react-router-dom";
 import backIcon from "../assets/icons.png";
 
-function TitleWithBackButton ({title}) {
+function TitleWithBackButton ({title, additionalStyles}) {
     return (
-        <div style = {{marginTop: "50px"}} className = "flex justify-center align-center gap-20">
+        <div style = {{marginTop: "50px", ...additionalStyles}} className = "flex justify-center align-center gap-20">
             <Link to="/">
             <img src = {backIcon} alt = "back-icon" width ={50} height = {50} />
             </Link>
