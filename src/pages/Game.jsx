@@ -114,24 +114,24 @@ function Game () {
     <div className="answers">
         <div className="answer-group">
             {question.answers[0].text ? 
-                <button className="answer-btn" onClick = {()=>submitAnswer(question.answers[0].id)}>A. {question.answers[0].text}</button>
+                <button className="answer-btn" onClick = {()=>submitAnswer(question.answers[0].id)}>1. {question.answers[0].text}</button>
             :
                 emptyButton
             }
             {question.answers[1].text ? 
-            <button className="answer-btn" onClick = {()=>submitAnswer(question.answers[1].id)}>C. {question.answers[1].text}</button>
+            <button className="answer-btn" onClick = {()=>submitAnswer(question.answers[1].id)}>3. {question.answers[1].text}</button>
             :
                 emptyButton
             }
         </div>
         <div className="answer-group">
         {question.answers[2].text ?
-            <button className="answer-btn" onClick = {()=>submitAnswer(question.answers[2].id)}>B. {question.answers[2].text}</button>
+            <button className="answer-btn" onClick = {()=>submitAnswer(question.answers[2].id)}>2. {question.answers[2].text}</button>
         :
             emptyButton
         }
         {question.answers[3].text ?
-            <button className="answer-btn" onClick= {()=>submitAnswer(question.answers[3].id)}>D. {question.answers[3].text}</button>
+            <button className="answer-btn" onClick= {()=>submitAnswer(question.answers[3].id)}>4. {question.answers[3].text}</button>
         :
             emptyButton
         }

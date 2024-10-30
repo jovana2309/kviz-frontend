@@ -1,0 +1,72 @@
+.table-container table {
+    width: 900px;
+    border-collapse: collapse;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin: 30px;
+  }
+  
+  .table-container th,
+  .table-container td {
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    
+  }
+  .table-container th {
+    text-align: left;
+  }
+  .table-container thead th {
+    background-color: #b11dde;
+  }
+  .table-container tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  .table-container tbody td {
+    position: relative;
+  }
+  .table-container tbody td:hover:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -9999px;
+    bottom: -9999px;
+    background-color: rgba(255, 255, 255, 0.2);
+    z-index: -1;
+  }
+
+.e-button {
+  background-color: #b11dde;
+  color: white; 
+  border: none; 
+  border-radius: 15px; 
+  padding: 7px 2px; 
+  cursor: pointer; 
+  margin: 7px;
+  width: 85%;
+}
+
+.e-button:hover{
+  background-color: black; 
+}
+
+.ev {
+ 
+  margin: 25px 15px;
+  padding: 5px 15px; 
+    font-size: 16px;  
+    width: auto;    
+    border: 1px;  
+    border-radius: 10px;  
+    background-color: #b11dde;  
+    color: white;
+    cursor: pointer;
+
+}
+
+
+.ev:hover {
+  background-color:black;
+
+}

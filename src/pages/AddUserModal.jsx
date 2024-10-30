@@ -42,7 +42,7 @@ const AddUserModal = ({ isOpen, onClose, onAddUser, existingUser }) => {
     setIsAdmin(false);
     onClose(); 
   };
-
+  
 
   if (!isOpen) return null;
 
