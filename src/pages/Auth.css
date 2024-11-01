@@ -61,7 +61,7 @@
         padding: 10px;
         border: none;
         border-radius: 5px;
-        background-color: #4CAF50;
+        background-color: #b11dde;
         color: #fff;
         font-size: 1.1rem;
         cursor: pointer;
@@ -69,7 +69,7 @@
     }
 
     button:hover {
-        background-color: #45a049;
+        background-color: #b11dde;
     }
 
 
@@ -81,7 +81,7 @@
     }
 
     .signup-link a {
-        color: #4CAF50;
+        color: #b11dde;
         text-decoration: none;
     }
 
