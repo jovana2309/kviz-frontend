@@ -35,7 +35,7 @@ const Adminleaderboard = () => {
       if (promptResult) { 
      const response = await axiosInstance.delete(`/admin/delete-result/${id}`);
      if (response.statusText === "OK") { 
-      setData((prevData) => prevData.filter((result) => user.id !== id));
+      setData((prevData) => prevData.filter((user) => user.id !== id));
     }  
   } 
    }
