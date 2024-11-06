@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {jwtDecode} from 'jwt-decode'
 function App() {
   const [user, setUser] = useState(null)
@@ -17,6 +17,13 @@ function App() {
     }
   }, [])
 
+  const handleLogout = () => {
+    
+    localStorage.removeItem("authToken");
+    setUser(null); 
+    navigate('/login'); 
+  };
+
   const Plays = user ? "Play" : "Login"; 
   return (
    <>
@@ -29,10 +36,15 @@ function App() {
       ) : ""}
       <li className="login"><Link to={Plays.toLowerCase()}>{Plays}</Link></li>
       <li><Link to={"/leaderboard"}>Leaderboard</Link></li>
+      {user && (
+          <li className="logout">
+            <button className="logout" onClick={handleLogout}>Log Out</button>
+          </li>
+        )}
    </ul>
 
  </>
   )
 }
 
-export default App
+export default App;
