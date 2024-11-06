@@ -30,7 +30,7 @@ list-style: none;
 }
 
 .main-menu li:hover {
-    background-color:purple;
+    background-color: #b11dde;
     cursor:pointer;
 }
 
