@@ -3,6 +3,7 @@ import './AdminUsers.css';
 import axiosInstance from "../services/axios";
 import { useState, useEffect, useRef } from "react";
 import AddUserModal from './AddUserModal';
+import ErrorMessage from "./Error.jsx";
 
 
 const AdminUsers = () => {
@@ -41,9 +42,13 @@ const AdminUsers = () => {
     }  
   } 
    }
-    catch (error) {
-      setError(error.message);
-    }
+   catch (err) {
+    console.log(err)
+    setError(err.response.data.message ? err.response.data.message : err.message);
+    setTimeout(() => {
+        setError(false);
+    }, 5000);
+}
   };
 
   const addUser = async (newUser) => {
@@ -53,9 +58,13 @@ const AdminUsers = () => {
       if (response.status === 201) {
         setData((prevData) => [...prevData, response.data]); 
       }
-    } catch (error) {
-      setError(error.message);
-    }
+    } catch (err) {
+      console.log(err)
+      setError(err.response.data.message ? err.response.data.message : err.message);
+      setTimeout(() => {
+          setError(false);
+      }, 5000);
+  }
   };
 
 
@@ -65,9 +74,13 @@ const AdminUsers = () => {
       if (response.status === 200) {
         setData((prevData) => prevData.map(user => (user.id === editingUser.id ? {id:editingUser.id, ime: editingUser.name, prezime: editingUser.surname, email:editingUser.email,  administrator: editingUser.isAdmin} : user )));
       }
-    } catch (error) {
-      setError(error.message);
-    }
+    } catch (err) {
+      console.log(err)
+      setError(err.response.data.message ? err.response.data.message : err.message);
+      setTimeout(() => {
+          setError(false);
+      }, 5000);
+  }
   };
 
   const handleEditClick = (user) => {
@@ -76,19 +89,25 @@ const AdminUsers = () => {
   }
 
   
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  const Rows =   (data.map(user => (
+    <tr key = {user.id}>
+      <td> {user.administrator ? 'Yes' : 'No'} </td>
+      <td> {user.email} </td>
+      <td> {user.ime} {user.prezime}</td>
+      <td>  
+        <button className = "e-button" onClick={() => handleEditClick(user)}>Edit</button>
+        <button onClick={() => deleteUser(user.id)} className = "e-button">Delete</button>
+      </td>
+    </tr>
+  ) 
 
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  ) );
 
     return (
         <>
         <div className="flex flexx">
-        <Adminsidebar active = "Users" />
+        <Adminsidebar active = "users" />
+        {error && <ErrorMessage>{error}</ErrorMessage>}
         <div className="table-container">
         <button className = "ev" onClick={() => { setEditingUser(null); setIsModalOpen(true); }}>Add User</button>
         <AddUserModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} 
@@ -104,19 +123,12 @@ const AdminUsers = () => {
 			</tr>
 		</thead>
     <tbody>
-      {data.map(user => (
-        <tr key = {user.id}>
-          <td> {user.administrator ? 'Yes' : 'No'} </td>
-          <td> {user.email} </td>
-          <td> {user.ime} {user.prezime}</td>
-          <td>  
-            <button className = "e-button" onClick={() => handleEditClick(user)}>Edit</button>
-            <button onClick={() => deleteUser(user.id)} className = "e-button">Delete</button>
-          </td>
-        </tr>
-      ) 
-
-      )}
+    {loading ? (
+                <tr><td colSpan="5">Loading...</td></tr>
+              )  : (
+                Rows
+              )}
+  
     </tbody>
 	</table>
         </div>

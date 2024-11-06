@@ -92,11 +92,22 @@ import ErrorMessage from "./Error.jsx";
             setIsModalOpen(true);
           }
 
-          if (loading) {
-              return <div>Loading...</div>;
-          }
-      
-  
+       const Rows =  (data.map((question, id) => (
+        <tr key = {id}>
+          <td> {question.pitanje} </td>
+          <td> {question.odgovor1} </td>
+          <td> {question.odgovor2} </td>
+          <td> {question.odgovor3}</td>
+          <td> {question.odgovor4}</td>
+          <td> {question.tacan_odgovor} </td>
+          <td>  
+            <button className = "e-button" onClick={() => handleEditClick(question)}>Edit</button>
+            <button className = "e-button" onClick={() => deleteQuestion(question.id)}>Delete</button>
+          </td>
+        </tr>
+      ) 
+
+    ));
 
  return (
 
@@ -121,22 +132,12 @@ import ErrorMessage from "./Error.jsx";
                 </tr>
             </thead>
             <tbody>
-            {data.map((question, id) => (
-        <tr key = {id}>
-          <td> {question.pitanje} </td>
-          <td> {question.odgovor1} </td>
-          <td> {question.odgovor2} </td>
-          <td> {question.odgovor3}</td>
-          <td> {question.odgovor4}</td>
-          <td> {question.tacan_odgovor} </td>
-          <td>  
-            <button className = "e-button" onClick={() => handleEditClick(question)}>Edit</button>
-            <button className = "e-button" onClick={() => deleteQuestion(question.id)}>Delete</button>
-          </td>
-        </tr>
-      ) 
-
-      )}
+            {loading ? (
+                <tr><td colSpan="5">Loading...</td></tr>
+              )  : (
+                Rows
+              )}
+     
             </tbody>
         </table>
      

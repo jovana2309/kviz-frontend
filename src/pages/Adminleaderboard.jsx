@@ -2,6 +2,7 @@ import Adminsidebar from "../components/Adminsidebar";
 import './Adminleaderboard.css';
 import axiosInstance from "../services/axios";
 import { useState, useEffect, useRef } from "react";
+import ErrorMessage from "./Error.jsx";
 
 
 const Adminleaderboard = () => {
@@ -38,9 +39,13 @@ const Adminleaderboard = () => {
     }  
   } 
    }
-    catch (error) {
-      setError(error.message);
-    }
+   catch (err) {
+    console.log(err)
+    setError(err.response.data.message ? err.response.data.message : err.message);
+    setTimeout(() => {
+        setError(false);
+    }, 5000);
+}
   };
  
   const Rows = data.map((result,index ) => (
@@ -61,6 +66,7 @@ const Adminleaderboard = () => {
         <>
         <div className="flex flexx">
         <Adminsidebar active = "leaderboard" />
+        {error && <ErrorMessage>{error}</ErrorMessage>}
         <div className="table-container">
 	<table>
 		<thead>
@@ -75,9 +81,7 @@ const Adminleaderboard = () => {
 		<tbody>
     {loading ? (
                 <tr><td colSpan="5">Loading...</td></tr>
-              ) : error ? (
-                <tr><td colSpan="5">{error}</td></tr>
-              ) : (
+              )  : (
                 Rows
               )}
 		</tbody>
